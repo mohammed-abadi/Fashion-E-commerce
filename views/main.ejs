@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fashion-E-commerce</title>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-container">
+    <h1 class="logo">Fashion-E-commerce</h1>
+
+    <nav class="nav">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#categories" class="nav-link">Categories</a>
+      <a href="#offers" class="nav-link">Offers</a>
+      <a href="#products" class="nav-link">Products</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="/cart" class="nav-link">Cart</a>
+    </nav>
+
+    <div class="auth-buttons">
+      <% if (user) { %>
+        <span class="username">Welcome, <%= user.username %></span>
+        <a href="/auth/logout" class="btn logout-btn">Logout</a>
+      <% } else { %>
+        <a href="/auth/sign-in" class="btn signin-btn">Sign In</a>
+        <a href="/auth/sign-up" class="btn signup-btn">Sign Up</a>
+      <% } %>
+    </div>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <div class="container hero-content">
+    <h2 class="hero-title">New Collection 2026</h2>
+    <p class="hero-subtitle">Upgrade your style with the latest trends</p>
+    <a href="#products" class="btn hero-btn">Shop Now</a>
+  </div>
+</section>
+
+
+<section id="categories" class="categories">
+  <div class="container">
+    <h2 class="section-title">Shop by Category</h2>
+
+    <div class="category-grid">
+      <a href="#products" class="category-card">T-Shirts</a>
+      <a href="#products" class="category-card">Jeans</a>
+      <a href="#products" class="category-card">Shirts</a>
+      <a href="#products" class="category-card">Shorts</a>
+      <a href="#products" class="category-card">Shoes</a>
+      <a href="#products" class="category-card">Watches</a>
+      <a href="#products" class="category-card">Accessories</a>
+    </div>
+  </div>
+</section>
+
+
+<section id="offers" class="offers">
+  <div class="container">
+    <h2 class="section-title">Special Offers</h2>
+
+    <div class="offers-grid">
+      <div class="offer-card">
+        <h3>50% OFF T-Shirts</h3>
+        <p>Limited time offer</p>
+        <a href="#products" class="btn">Shop Now</a>
+      </div>
+
+      <div class="offer-card">
+        <h3>Buy 1 Get 1 Free</h3>
+        <p>On selected items</p>
+        <a href="#products" class="btn">Shop Now</a>
+      </div>
+
+      <div class="offer-card">
+        <h3>Free Shipping</h3>
+        <p>On orders above $100</p>
+        <a href="#products" class="btn">Shop Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="products" class="products">
+  <div class="container">
+    <h2 class="section-title">Products</h2>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <h3 class="product-name">Product Name</h3>
+        <p class="product-price">$0</p>
+        <button class="btn add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <h3 class="product-name">Product Name</h3>
+        <p class="product-price">$0</p>
+        <button class="btn add-to-cart">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <h3 class="product-name">Product Name</h3>
+        <p class="product-price">$0</p>
+        <button class="btn add-to-cart">Add to Cart</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="section-title">Contact Us</h2>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Customer Help Department">
+      <input type="email" placeholder="a66s99a4@gmail.com">
+      <textarea placeholder="We are available to serve you 24 hours a day"></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container footer-container">
+
+    <div class="footer-section">
+      <h3>StyleHub</h3>
+      <p>Men's fashion store for modern style</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#offers">Offers</a>
+      <a href="#products">Products</a>
+    </div>
+
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>Email: a66s99a4@gmail.com</p>
+      <p>Phone: +973 66937709</p>
+    </div>
+
+  </div>
+
+  <p class="footer-bottom">© 2026 The brand is managed by Abdulaziz, Mohammed, and Abdullah</p>
+</footer>
+
+</body>
+</html>
