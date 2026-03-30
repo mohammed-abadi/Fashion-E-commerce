@@ -1,0 +1,33 @@
+{
+  "name": "fashion-e-commerce",
+  "version": "1.0.0",
+  "description": "1- *Mohamed Hasan Ahmed*",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammed-abadi/Fashion-E-commerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mohammed-abadi/Fashion-E-commerce/issues"
+  },
+  "homepage": "https://github.com/mohammed-abadi/Fashion-E-commerce#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "connect-mongo": "^6.0.0",
+    "dotenv": "^17.3.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.3.3",
+    "morgan": "^1.10.1"
+  }
+}
