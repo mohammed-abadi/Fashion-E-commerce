@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Fashion-E-commerce</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -20,7 +21,7 @@
     </nav>
 
     <div class="auth-buttons">
-      <% if (user) { %>
+      <% if (locals.user) { %>
         <span class="username">Welcome, <%= user.username %></span>
         <a href="/auth/logout" class="btn logout-btn">Logout</a>
       <% } else { %>
@@ -97,32 +98,18 @@
       </div>
 
       <div class="product-card">
-        <h3 class="product-name">Product Name</h3>
-        <p class="product-price">$0</p>
+        <h3 class="product-name">Jeans</h3>
+        <p class="product-price">$10</p>
         <button class="btn add-to-cart">Add to Cart</button>
       </div>
 
       <div class="product-card">
-        <h3 class="product-name">Product Name</h3>
-        <p class="product-price">$0</p>
+        <h3 class="product-name">Shirts</h3>
+        <p class="product-price">$8</p>
         <button class="btn add-to-cart">Add to Cart</button>
       </div>
 
     </div>
-  </div>
-</section>
-
-
-<section id="contact" class="contact">
-  <div class="container">
-    <h2 class="section-title">Contact Us</h2>
-
-    <form class="contact-form">
-      <input type="text" placeholder="Customer Help Department">
-      <input type="email" placeholder="a66s99a4@gmail.com">
-      <textarea placeholder="We are available to serve you 24 hours a day"></textarea>
-      <button type="submit" class="btn">Send</button>
-    </form>
   </div>
 </section>
 
@@ -151,7 +138,7 @@
 
   </div>
 
-  <p class="footer-bottom">© 2026 The brand is managed by Abdulaziz, Mohammed, and Abdullah</p>
+  <p class="footer-bottom">© 2026 The brand is managed by Abdulaziz, Mohammed, and Abdulla</p>
 </footer>
 
 </body>

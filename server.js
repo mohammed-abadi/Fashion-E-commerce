@@ -32,8 +32,11 @@ app.use(
 )
 
 app.get("/", (req, res) => {
-  res.send("🧑‍🍳 Mongoose Recipes is open for business . . . ")
+  res.render("main.ejs")
 })
+// app.get("/", (req, res) => {
+//   res.render("🧑‍🍳 Mongoose Recipes is open for business . . . ")
+// })
 
 app.listen(PORT, () => {
   console.log(`🥘 Mongoose Recipes Server is cooking on Port ${PORT} . . . `)
