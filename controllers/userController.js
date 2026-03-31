@@ -4,6 +4,10 @@ const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
 
+    if (!user) {
+      return res.send("❌ User not found!")
+    }
+
     const data = {
       _id: user._id,
       first: user.first,
@@ -12,10 +16,10 @@ const getUserById = async (req, res) => {
       picture: user.picture,
     }
 
-    res.send(data)
+    res.render("./users/profile.ejs", { user: data })
   } catch (error) {
     console.error("⚠️ An error has occurred finding a user!", error.message)
-    res.status(500).send("Error finding user")
+    res.send("❌ Error finding user")
   }
 }
 
