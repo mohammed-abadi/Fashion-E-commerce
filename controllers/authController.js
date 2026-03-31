@@ -18,7 +18,7 @@ const registerUser = async (req, res) => {
       last: req.body.last,
       picture: req.body.picture,
     })
-    res.status(201).send(`🙏 Thanks for signing up! Please sign in.`)
+    res.status(201).send("🙏 Thanks for signing up!")
   } catch (error) {
     console.error("⚠️ An error has occurred registering a user!", error.message)
     res.status(500).send("An error occurred during registration")
@@ -48,7 +48,7 @@ const signInUser = async (req, res) => {
       picture: user.picture,
     }
 
-    res.send({
+    res.status(200).json({
       message: "✅ Successfully signed in!",
       user: req.session.user,
     })
@@ -68,17 +68,8 @@ const signOutUser = async (req, res) => {
   })
 }
 
-const getCurrentUser = async (req, res) => {
-  if (req.session.user) {
-    res.send({ user: req.session.user })
-  } else {
-    res.send({ user: null })
-  }
-}
-
 module.exports = {
   registerUser,
   signInUser,
   signOutUser,
-  getCurrentUser,
 }
