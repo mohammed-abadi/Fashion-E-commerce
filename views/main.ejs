@@ -22,8 +22,8 @@
 
     <div class="auth-buttons">
       <% if (locals.user) { %>
-        <span class="username">Welcome, <%= user.username %></span>
-        <a href="/auth/logout" class="btn logout-btn">Logout</a>
+        <span class="username">Welcome, <%= user.first %> <%= user.last %></span>
+        <a href="/auth/sign-out" class="btn logout-btn">Logout</a>
       <% } else { %>
         <a href="/auth/sign-in" class="btn signin-btn">Sign In</a>
         <a href="/auth/sign-up" class="btn signup-btn">Sign Up</a>
@@ -312,10 +312,40 @@
 
     <div class="product-grid">
       <div class="product-card">
-        <h3 class="product-name">leather watch</h3>
-        <p class="product-price">$250</p>
+        <img src="https://cdn.luxatic.com/wp-content/uploads/2023/02/Best-Gold-Watches-for-Men.jpg" class="product-img" alt="Watches">
+        <h3 class="product-name">black leather watch</h3>
+        <p class="product-price">$206</p>
         <button class="btn add-to-cart">Add to Cart</button>
       </div>
+
+      <div class="product-card">
+        <img src="https://mensflair.com/wp-content/uploads/2023/07/longines-dolce-vita-on-wrist.jpg" class="product-img" alt="Watches">
+        <h3 class="product-name">brown leather watch</h3>
+        <p class="product-price">$190</p>
+        <button class="btn add-to-cart">Add to Cart</button>
+      </div>
+
+<div class="product-card">
+        <img src="https://wwd.com/wp-content/uploads/2023/10/best-watches-for-men.png?w=911" class="product-img" alt="Watches">
+        <h3 class="product-name">Steel watch</h3>
+        <p class="product-price">$122</p>
+        <button class="btn add-to-cart">Add to Cart</button>
+      </div>
+
+<div class="product-card">
+        <img src="https://cdn.watchesyoucanafford.com/wp-content/uploads/2022/08/Best-Affordable-Chronograph-Watches.jpg" class="product-img" alt="Watches">
+        <h3 class="product-name">casual watch</h3>
+        <p class="product-price">$90</p>
+        <button class="btn add-to-cart">Add to Cart</button>
+      </div>
+
+<div class="product-card">
+        <img src="https://cdn.luxe.digital/media/2021/07/02104538/best-men-watches-review-luxe-digital@2x.jpg" class="product-img" alt="Watches">
+        <h3 class="product-name">new stylish watch</h3>
+        <p class="product-price">$240</p>
+        <button class="btn add-to-cart">Add to Cart</button>
+      </div>
+
     </div>
   </div>
 </section>
@@ -375,5 +405,3 @@
 </style>
 </body>
 </html>
-
-
