@@ -10,6 +10,7 @@ const session = require("express-session")
 const { MongoStore } = require("connect-mongo")
 
 const path = require("path")
+const middleware = require("./middleware")
 
 const PORT = process.env.PORT ? process.env.PORT : 3000
 
@@ -30,6 +31,7 @@ app.use(
     }),
   })
 )
+app.use(middleware.passUserToView)
 
 app.get("/", (req, res) => {
   res.render("main.ejs")
