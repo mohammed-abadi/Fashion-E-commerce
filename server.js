@@ -9,6 +9,7 @@ const { MongoStore } = require("connect-mongo")
 const path = require("path")
 
 const db = require("./db")
+const middleware = require("./middleware")
 const authRouter = require("./routes/authRouter")
 const userRouter = require("./routes/userRouter")
 const addressRouter = require("./routes/addressRouter")
@@ -31,6 +32,7 @@ app.use(
     }),
   })
 )
+app.use(middleware.passUserToView)
 
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
