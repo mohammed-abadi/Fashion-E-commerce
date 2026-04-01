@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In - FashionHub</title>
+  </head>
+  <body>
+    <h1>Sign In</h1>
+    <form action="/auth/sign-in" method="POST">
+      <div>
+        <label>Email:</label>
+        <input type="email" name="email" />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input type="password" name="password" />
+      </div>
+      <button type="submit">Sign In</button>
+    </form>
+    <p>Don't have an account? <a href="/auth/sign-up">Sign Up</a></p>
+    <p><a href="/">Back to Home</a></p>
+  </body>
+</html>
