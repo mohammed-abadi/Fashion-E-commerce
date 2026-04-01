@@ -45,6 +45,9 @@ app.use("/users", userRouter)
 app.get("/", (req, res) => {
   res.render("main", { user: req.session.user || null })
 })
+app.get("/cart", (req, res) => {
+  res.render("cart");
+});
 
 app.listen(PORT, () => {
   console.log(`👗 FashionHub Server is running on Port ${PORT} . . . `)
