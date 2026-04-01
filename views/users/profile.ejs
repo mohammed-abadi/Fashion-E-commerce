@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - FashionHub</title>
+</head>
+<body>
+    <h1>Welcome, <%= user.first %> <%= user.last %>!</h1>
+
+    <% if (user.picture) { %>
+        <img src="<%= user.picture %>" alt="Profile Picture" width="150" height="150">
+    <% } %>
+
+    <p><strong>Email:</strong> <%= user.email %></p>
+
+    <div>
+        <a href="/auth/<%= user._id %>/update-password">Update Password</a>
+    </div>
+
+    <div>
+        <a href="/auth/sign-out">Sign Out</a>
+    </div>
+
+    <div>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

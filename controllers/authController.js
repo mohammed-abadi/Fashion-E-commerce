@@ -11,7 +11,7 @@ const registerUser = async (req, res) => {
       return res.send("❌ Password and Confirm Password must match")
     }
     const hashedPassword = await bcrypt.hash(req.body.password, 12)
-    await User.create({
+    const newUser = await User.create({
       email: req.body.email,
       password: hashedPassword,
       first: req.body.first,

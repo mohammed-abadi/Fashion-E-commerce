@@ -8,7 +8,7 @@ const getUserById = async (req, res) => {
       return res.send("❌ User not found!")
     }
 
-    const data = {
+    const userData = {
       _id: user._id,
       first: user.first,
       last: user.last,
@@ -16,7 +16,7 @@ const getUserById = async (req, res) => {
       picture: user.picture,
     }
 
-    res.render("./users/profile.ejs", { user: data })
+    res.render("./users/profile.ejs", { user: userData })
   } catch (error) {
     console.error("⚠️ An error has occurred finding a user!", error.message)
     res.send("❌ Error finding user")

@@ -16,8 +16,10 @@ router.post("/sign-in", authController.signInUser)
 
 router.get("/sign-out", authController.signOutUser)
 
-router.get("/:id/update-password", (req, res) => {
-  res.render("./auth/update-password.ejs")
+router.get("/:id/update-password", async (req, res) => {
+  const User = require("../models/User.js")
+  const user = await User.findById(req.params.id)
+  res.render("./auth/update-password.ejs", { user })
 })
 
 router.put("/:id", authController.updatePassword)
