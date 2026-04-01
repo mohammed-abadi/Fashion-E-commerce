@@ -47,5 +47,5 @@ app.get("/", (req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`👗 FashionHub Server is running on Port ${PORT} . . . `)
+  console.log(`:dress: FashionHub Server is running on Port ${PORT} . . . `)
 })
