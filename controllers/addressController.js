@@ -7,7 +7,7 @@ const createAddress = async (req, res) => {
     res.redirect("/")
   } catch (error) {
     console.error("⚠️ An error has occurred finding a user!", error.message)
-    res.send("❌  finding user")
+    res.send("❌  error sending data")
   }
 }
 
