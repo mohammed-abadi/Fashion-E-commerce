@@ -11,6 +11,7 @@ const path = require("path")
 const db = require("./db")
 const authRouter = require("./routes/authRouter")
 const userRouter = require("./routes/userRouter")
+const addressRouter = require("./routes/addressRouter")
 
 const PORT = process.env.PORT ? process.env.PORT : 3000
 const app = express()
@@ -41,13 +42,14 @@ app.use((req, res, next) => {
 
 app.use("/auth", authRouter)
 app.use("/users", userRouter)
+app.use("/address", addressRouter)
 
 app.get("/", (req, res) => {
   res.render("main", { user: req.session.user || null })
 })
 app.get("/cart", (req, res) => {
-  res.render("cart");
-});
+  res.render("cart")
+})
 
 app.listen(PORT, () => {
   console.log(`:dress: FashionHub Server is running on Port ${PORT} . . . `)

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout</title>
+  </head>
+  <body>
+    <h1>Shipping Information</h1>
+    <form action="/address" method="POST">
+      <p>Ordering by: <strong><%= user.first %> <%= user.last %></strong></p>
+
+      <div class="input-group">
+        <label>Address:</label><br />
+        <input type="text" name="address" required placeholder="Home Address" />
+      </div>
+
+      <div class="input-group">
+        <label>Street:</label><br />
+        <input type="text" name="street" required placeholder="Highway 10" />
+      </div>
+
+      <div class="input-group">
+        <label>City:</label><br />
+        <input type="text" name="city" placeholder="Manama" />
+      </div>
+
+      <div class="input-group">
+        <label>Payment:</label><br />
+        <select name="payment" required>
+          <option value="" disabled selected>Select payment</option>
+          <option value="cash">cash</option>
+          <option value="card/visa">card</option>
+        </select>
+      </div>
+
+      <input type="hidden" name="user" value="<%= user._id %>" />
+
+      <button type="submit">Confirm & Pay</button>
+    </form>
+  </body>
+</html>

@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Cart</title>
-</head>
-<body>
+  <head>
+    <title>Cart</title>
+  </head>
+  <body>
+    <h1>Your Cart 🛒</h1>
 
-<h1>Your Cart 🛒</h1>
+    <div id="cart-items"></div>
+    <h3 id="total"></h3>
 
-<div id="cart-items"></div>
-<h3 id="total"></h3>
+    <a href="/">⬅ Back to Shop</a>
+    <script>
+      let cart = JSON.parse(localStorage.getItem("cart")) || []
 
-<a href="/">⬅ Back to Shop</a>
+      function displayCart() {
+        let container = document.getElementById("cart-items")
+        let total = 0
 
-<script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        container.innerHTML = ""
 
-function displayCart() {
-  let container = document.getElementById("cart-items");
-  let total = 0;
+        cart.forEach((item, index) => {
+          total += item.price
 
-  container.innerHTML = "";
-
-  cart.forEach((item, index) => {
-    total += item.price;
-
-    container.innerHTML += `
+          container.innerHTML += `
       <div style="margin:10px;">
         ${item.name} - $${item.price}
         <button onclick="removeItem(${index})">Remove</button>
       </div>
-    `;
-  });
+    `
+        })
 
-  document.getElementById("total").innerText = "Total: $" + total;
-}
+        document.getElementById("total").innerText = "Total: $" + total
+      }
 
-function removeItem(index) {
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  displayCart();
-}
+      function removeItem(index) {
+        cart.splice(index, 1)
+        localStorage.setItem("cart", JSON.stringify(cart))
+        displayCart()
+      }
 
-displayCart();
-</script>
+      displayCart()
+    </script>
 
-</body>
+    <%- include('./checkout.ejs') %>
+  </body>
 </html>
