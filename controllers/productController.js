@@ -111,8 +111,7 @@ const seedProducts = async (req, res) => {
     await Product.insertMany(products)
     res.send("Products seeded successfully!")
   } catch (error) {
-    console.error(error)
-    res.status(500).send("Error seeding products")
+    console.error(error) / res.status(500).send("Error seeding products")
   }
 }
 
