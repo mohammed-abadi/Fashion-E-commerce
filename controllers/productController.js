@@ -105,7 +105,6 @@ const seedProducts = async (req, res) => {
         category: "Shirts",
         description: "Classic white striped shirt, breathable and stylish.",
       },
-      // Add more products as needed
     ]
 
     await Product.deleteMany({})
