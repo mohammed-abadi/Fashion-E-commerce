@@ -1,4 +1,5 @@
 const User = require("../models/User.js")
+const Address = require("../models/Address.js")
 
 const getUserById = async (req, res) => {
   try {
@@ -8,6 +9,8 @@ const getUserById = async (req, res) => {
       return res.send("❌ User not found!")
     }
 
+    const address = await Address.findOne({ user: user._id })
+
     const userData = {
       _id: user._id,
       first: user.first,
@@ -16,7 +19,10 @@ const getUserById = async (req, res) => {
       picture: user.picture,
     }
 
-    res.render("./users/profile.ejs", { user: userData })
+    res.render("./users/profile.ejs", {
+      user: userData,
+      address: address || null,
+    })
   } catch (error) {
     console.error("⚠️ An error has occurred finding a user!", error.message)
     res.send("❌ Error finding user")

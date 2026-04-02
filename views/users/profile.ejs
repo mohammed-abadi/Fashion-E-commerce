@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - FashionHub</title>
     <link rel="stylesheet" href="/style.css">
-
 </head>
 <body>
 
@@ -32,14 +31,12 @@
 </header>
 
 <div class="profile-container">
-
+    <div class="profile-header">
         <h1>Welcome, <%= user.first %> <%= user.last %>!</h1>
-          <% if (user.picture) { %>
-        <img src="<%= user.picture %>" alt="Profile Picture" style="border-radius: 50%; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
-    <% } %>
+        <% if (user.picture) { %>
+            <img src="<%= user.picture %>" alt="Profile Picture" style="border-radius: 50%; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
+        <% } %>
     </div>
-
-
 
     <div class="profile-section">
         <h3>Personal Information</h3>
@@ -61,7 +58,7 @@
         <h3>Shipping Address & Payment Method</h3>
         <div id="addressDisplay">
             <div id="addressInfo" class="address-display">
-                <% if (address) { %>
+                <% if (address && address.address) { %>
                     <div class="info-row">
                         <span class="info-label">Address:</span>
                         <span class="info-value"><%= address.address %></span>
@@ -90,19 +87,19 @@
             <form id="updateAddressForm" action="/address" method="POST">
                 <div class="form-group">
                     <label>Address:</label>
-                    <input type="text" id="address" name="address" required placeholder="Home Address" value="<%= address ? address.address : '' %>">
+                    <input type="text" id="addressInput" name="address" required placeholder="Home Address" value="<%= address && address.address ? address.address : '' %>">
                 </div>
                 <div class="form-group">
                     <label>Street:</label>
-                    <input type="text" id="street" name="street" required placeholder="Highway 10" value="<%= address ? address.street : '' %>">
+                    <input type="text" id="streetInput" name="street" required placeholder="Highway 10" value="<%= address && address.street ? address.street : '' %>">
                 </div>
                 <div class="form-group">
                     <label>City:</label>
-                    <input type="text" id="city" name="city" placeholder="Manama" value="<%= address ? address.city : '' %>">
+                    <input type="text" id="cityInput" name="city" placeholder="Manama" value="<%= address && address.city ? address.city : '' %>">
                 </div>
                 <div class="form-group">
                     <label>Payment Method:</label>
-                    <select id="payment" name="payment" required>
+                    <select id="paymentSelect" name="payment" required>
                         <option value="cash" <%= address && address.payment === 'cash' ? 'selected' : '' %>>Cash on Delivery</option>
                         <option value="card" <%= address && address.payment === 'card' ? 'selected' : '' %>>Card Payment</option>
                     </select>
@@ -135,16 +132,25 @@ function updateCartCount() {
 
 updateCartCount();
 
+// Edit address button
+const editAddressBtn = document.getElementById('editAddressBtn');
+const cancelEditBtn = document.getElementById('cancelEditBtn');
+const addressDisplay = document.getElementById('addressDisplay');
+const addressForm = document.getElementById('addressForm');
 
-document.getElementById('editAddressBtn').addEventListener('click', () => {
-    document.getElementById('addressDisplay').classList.add('hidden');
-    document.getElementById('addressForm').classList.remove('hidden');
-});
+if (editAddressBtn) {
+    editAddressBtn.addEventListener('click', () => {
+        addressDisplay.classList.add('hidden');
+        addressForm.classList.remove('hidden');
+    });
+}
 
-document.getElementById('cancelEditBtn').addEventListener('click', () => {
-    document.getElementById('addressDisplay').classList.remove('hidden');
-    document.getElementById('addressForm').classList.add('hidden');
-});
+if (cancelEditBtn) {
+    cancelEditBtn.addEventListener('click', () => {
+        addressDisplay.classList.remove('hidden');
+        addressForm.classList.add('hidden');
+    });
+}
 
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -152,8 +158,11 @@ if (urlParams.get('updated') === 'true') {
     const successMsg = document.createElement('div');
     successMsg.className = 'alert alert-success';
     successMsg.textContent = 'Address updated successfully!';
-    document.querySelector('.profile-section').insertBefore(successMsg, document.getElementById('addressDisplay'));
-    setTimeout(() => successMsg.remove(), 3000);
+    const profileSection = document.querySelector('.profile-section');
+    if (profileSection) {
+        profileSection.insertBefore(successMsg, document.getElementById('addressDisplay'));
+        setTimeout(() => successMsg.remove(), 3000);
+    }
 }
 </script>
 
