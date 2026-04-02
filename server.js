@@ -13,6 +13,8 @@ const middleware = require("./middleware")
 const authRouter = require("./routes/authRouter")
 const userRouter = require("./routes/userRouter")
 const addressRouter = require("./routes/addressRouter")
+const productRouter = require("./routes/productRouter")
+const Product = require("./models/Product")
 
 const PORT = process.env.PORT ? process.env.PORT : 3000
 const app = express()
@@ -45,12 +47,33 @@ app.use((req, res, next) => {
 app.use("/auth", authRouter)
 app.use("/users", userRouter)
 app.use("/address", addressRouter)
+app.use("/product", productRouter)
 
-app.get("/", (req, res) => {
-  res.render("main", { user: req.session.user || null })
+app.get("/profile", (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/auth/sign-in")
+  }
+  res.render("users/profile", { user: req.session.user })
 })
+
+app.get("/", async (req, res) => {
+  try {
+    const products = await Product.find()
+    res.render("main", {
+      user: req.session.user || null,
+      products: products,
+    })
+  } catch (error) {
+    console.error(error)
+    res.render("main", {
+      user: req.session.user || null,
+      products: [],
+    })
+  }
+})
+
 app.get("/cart", (req, res) => {
-  res.render("cart")
+  res.render("cart/index", { user: req.session.user || null })
 })
 
 app.listen(PORT, () => {

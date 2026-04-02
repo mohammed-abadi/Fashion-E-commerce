@@ -1,13 +1,18 @@
 const mongoose = require("mongoose")
 
-// maybe i forgot something like product
 const reviewSchema = new mongoose.Schema(
   {
-    title: {
-      type: String,
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
       required: true,
     },
-    body: {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    userName: {
       type: String,
       required: true,
     },
@@ -17,13 +22,14 @@ const reviewSchema = new mongoose.Schema(
       min: 1,
       max: 5,
     },
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    comment: {
+      type: String,
       required: true,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 )
 
 module.exports = mongoose.model("Review", reviewSchema)

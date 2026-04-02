@@ -10,8 +10,8 @@
 <header class="header">
   <div class="container header-container">
     <h1 class="logo">
-  Fashion-E-commerce
-</h1>
+      Fashion-E-commerce
+    </h1>
 
     <nav class="nav">
       <a href="#home" class="nav-link">Home</a>
@@ -19,14 +19,15 @@
       <a href="#offers" class="nav-link">Offers</a>
       <a href="#products" class="nav-link">Products</a>
       <a href="#contact" class="nav-link">Contact</a>
-      <a href="/cart" class="nav-link">Cart</a>
+      <div class="cart-nav">
+        <a href="/cart" class="nav-link">Cart</a>
+        <span class="cart-icon-badge">🛒 <span id="cart-count">0</span></span>
+      </div>
     </nav>
 
     <div class="auth-buttons">
-      <div class="cart-icon">
-    🛒 <span id="cart-count">0</span>
-  </div>
       <% if (locals.user) { %>
+        <a href="/profile" class="btn profile-btn">👤 Profile</a>
         <span class="username">Welcome, <%= user.first %> <%= user.last %></span>
         <a href="/auth/sign-out" class="btn logout-btn">Logout</a>
       <% } else { %>
@@ -45,390 +46,178 @@
   </div>
 </section>
 
-
 <section id="categories" class="categories">
   <div class="container">
     <h2 class="section-title">Shop by Category</h2>
-
     <div class="category-grid">
-
-        <a href="#jeans" class="category-card">Jeans</a>
-        <a href="#shirts" class="category-card">Shirts</a>
-        <a href="#tshirts" class="category-card">T-Shirts</a>
-        <a href="#shorts" class="category-card">Shorts</a>
-        <a href="#shoes" class="category-card">Shoes</a>
-        <a href="#watches" class="category-card">Watches</a>
-
+      <a href="#jeans" class="category-card">Jeans</a>
+      <a href="#shirts" class="category-card">Shirts</a>
+      <a href="#tshirts" class="category-card">T-Shirts</a>
+      <a href="#shorts" class="category-card">Shorts</a>
+      <a href="#shoes" class="category-card">Shoes</a>
+      <a href="#watches" class="category-card">Watches</a>
     </div>
   </div>
 </section>
-
 
 <section id="offers" class="offers">
   <div class="container">
     <h2 class="section-title">Special Offers</h2>
-
     <div class="offers-grid">
-  <div class="offer-card">
-    <img src="https://i.pinimg.com/originals/94/3d/18/943d18d66e94b720702f14388e517f99.jpg" alt="50% OFF T-Shirts" class="offer-img">
-    <h3>50% OFF T-Shirts</h3>
-    <p>Limited time offer</p>
-    <a href="#products" class="btn">Shop Now</a>
-  </div>
-
-  <div class="offer-card">
-    <img src="" alt="Buy 1 Get 1 Free" class="offer-img">
-    <h3>Buy 1 Get 1 Free</h3>
-    <p>On selected items</p>
-    <a href="#products" class="btn">Shop Now</a>
-  </div>
-
-  <div class="offer-card">
-    <img src="" alt="Free Shipping" class="offer-img">
-    <h3>Free Shipping</h3>
-    <p>On orders above $100</p>
-    <a href="#products" class="btn">Shop Now</a>
-  </div>
-</div>
-
+      <div class="offer-card">
+        <img src="https://i.pinimg.com/originals/94/3d/18/943d18d66e94b720702f14388e517f99.jpg" alt="50% OFF T-Shirts" class="offer-img">
+        <h3>50% OFF T-Shirts</h3>
+        <p>Limited time offer</p>
+        <a href="#products" class="btn">Shop Now</a>
+      </div>
+      <div class="offer-card">
+        <img src="" alt="Buy 1 Get 1 Free" class="offer-img">
+        <h3>Buy 1 Get 1 Free</h3>
+        <p>On selected items</p>
+        <a href="#products" class="btn">Shop Now</a>
+      </div>
+      <div class="offer-card">
+        <img src="" alt="Free Shipping" class="offer-img">
+        <h3>Free Shipping</h3>
+        <p>On orders above $100</p>
+        <a href="#products" class="btn">Shop Now</a>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Shirts Section -->
 <section id="shirts" class="products">
   <div class="container">
     <h2 class="section-title">Shirts</h2>
-
     <div class="product-grid">
-      <div class="product-card">
-      <img src="https://dfcdn.defacto.com.tr/768/Z5182AZ_23SP_BG350_02_03.jpg" class="product-img" alt="Shirts">
-        <h3 class="product-name">striped cotton shirt</h3>
-        <p class="product-price">$80</p>
-        <button onclick="addToCart('striped cotton shirt', 80)">
-Add to Cart
-</button>
-      </div>
-
-      <div class="product-card">
-      <img src="https://img-lcwaikiki.mncdn.com/mnpadding/480/640/ffffff/pim/productimages/20252/8869601/v1/l_20252-w5o571z8-lhw-98-76-98-188_a.jpg" class="product-img" alt="Shirts">
-        <h3 class="product-name">white striped shirt</h3>
-        <p class="product-price">$53</p>
-        <button onclick="addToCart('white striped shirt', 53)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-      <img src="https://img-lcwaikiki.mncdn.com/mnpadding/480/640/ffffff/pim/productimages/20261/8497803/v1/l_20261-s68231z8-len-101-78-96-187_a.jpg" class="product-img" alt="Shirts">
-        <h3 class="product-name">blue striped shirt</h3>
-        <p class="product-price">$72</p>
-        <button onclick="addToCart('blue striped shirt', 72)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-      <img src="https://dfcdn.defacto.com.tr/480/B4642AX_24SP_GN516_03_01.jpg" class="product-img" alt="Shirts">
-        <h3 class="product-name">yellow striped shirt</h3>
-        <p class="product-price">$90</p>
-        <button onclick="addToCart('yellow striped shirt', 90)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-      <img src="https://dfcdn.defacto.com.tr/768/S1240AZ_22WN_WT33_01_01.jpg" class="product-img" alt="Shirts">
-        <h3 class="product-name">gray cotton shirt</h3>
-        <p class="product-price">$102</p>
-        <button onclick="addToCart('gray cotton shirt', 102)">
-Add to Cart
-</button>
-      </div>
-
+      <% products.filter(p => p.category === 'Shirts').forEach(product => { %>
+        <div class="product-card">
+          <a href="/product/<%= product._id %>" style="text-decoration: none; color: inherit;">
+            <img src="<%= product.image %>" class="product-img" alt="<%= product.name %>">
+            <h3 class="product-name"><%= product.name %></h3>
+            <p class="product-price">$<%= product.price %></p>
+          </a>
+          <button class="add-to-cart-btn" data-name="<%= product.name.replace(/'/g, "\\'") %>" data-price="<%= product.price %>">
+            Add to Cart
+          </button>
+        </div>
+      <% }) %>
     </div>
   </div>
 </section>
 
+<!-- T-Shirts Section -->
 <section id="tshirts" class="products">
   <div class="container">
     <h2 class="section-title">T-Shirts</h2>
-
     <div class="product-grid">
-      <div class="product-card">
-        <img src="https://i.pinimg.com/originals/28/1f/ea/281fea5c66b6b059acdb20ee5e00461e.jpg" class="product-img" alt="T-Shirts">
-        <h3 class="product-name">white oversized t-shirt</h3>
-        <p class="product-price">$36</p>
-        <button onclick="addToCart('white oversized t-shirt', 36)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://st.mngbcn.com/rcs/pics/static/T4/fotos/S20/47001057_91.jpg?ts=1664876790615&imwidth=337&imdensity=2" class="product-img" alt="T-Shirts">
-        <h3 class="product-name">gray T-shirt</h3>
-        <p class="product-price">$31</p>
-        <button onclick="addToCart('gray T-shirt', 31)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://i.pinimg.com/originals/bf/80/51/bf80515a5be6282c6128312ac4691d83.jpg" class="product-img" alt="T-Shirts">
-        <h3 class="product-name">black oversized t-shirt</h3>
-        <p class="product-price">$36</p>
-        <button onclick="addToCart('black oversized t-shirt', 36)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://frankybros.com/wp-content/uploads/2021/12/light-pink-t-shirt-for-mens-online-in-india-franky-bros-brand.webp" class="product-img" alt="T-Shirts">
-        <h3 class="product-name">pink t-shirt</h3>
-        <p class="product-price">$36</p>
-        <button onclick="addToCart('pink t-shirt', 36)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://oldnavy.gap.com/webcontent/0053/414/966/cn53414966.jpg" class="product-img" alt="T-Shirts">
-        <h3 class="product-name">blue t-shirt</h3>
-        <p class="product-price">$29</p>
-        <button onclick="addToCart('blue t-shirt', 29)">
-Add to Cart
-</button>
-      </div>
-
+      <% products.filter(p => p.category === 'T-Shirts').forEach(product => { %>
+        <div class="product-card">
+          <a href="/product/<%= product._id %>" style="text-decoration: none; color: inherit;">
+            <img src="<%= product.image %>" class="product-img" alt="<%= product.name %>">
+            <h3 class="product-name"><%= product.name %></h3>
+            <p class="product-price">$<%= product.price %></p>
+          </a>
+          <button class="add-to-cart-btn" data-name="<%= product.name.replace(/'/g, "\\'") %>" data-price="<%= product.price %>">
+            Add to Cart
+          </button>
+        </div>
+      <% }) %>
     </div>
   </div>
 </section>
 
+<!-- Jeans Section -->
 <section id="jeans" class="products">
   <div class="container">
     <h2 class="section-title">Jeans</h2>
-
     <div class="product-grid">
-
-      <div class="product-card">
-     <img src="https://lscoglobal.scene7.com/is/image/lscoglobal/006IC-0001_M_JEANS_EXTRA_BAGGY?fmt=jpeg&qlt=70&resMode=sharp2&fit=crop,1&op_usm=0.6,0.6,8&wid=1200&hei=1500" class="product-img" alt="Jeans">
-        <h3 class="product-name">light blue jeans</h3>
-        <p class="product-price">$48</p>
-        <button onclick="addToCart('light blue jeans', 48)">
-Add to Cart
-</button>
-      </div>
-
-      <div class="product-card">
-    <img src="https://n.nordstrommedia.com/it/522a9921-54ba-417a-932d-deb2253abccb.jpeg?h=368&w=240&dpr=2" class="product-img" alt="Jeans">
-        <h3 class="product-name">black jeans</h3>
-        <p class="product-price">$48</p>
-        <button onclick="addToCart('black jeans', 48)">
-Add to Cart
-</button>
-      </div>
-
-      <div class="product-card">
-    <img src="https://i.pinimg.com/736x/c5/d9/dc/c5d9dcb899968663a681995670ae3a51.jpg" class="product-img" alt="Jeans">
-        <h3 class="product-name">white jeans</h3>
-        <p class="product-price">$48</p>
-        <button onclick="addToCart('white jeans', 48)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-    <img src="https://i.pinimg.com/736x/60/fb/73/60fb7343703b69c4333eda70048857f7.jpg" class="product-img" alt="Jeans">
-        <h3 class="product-name">Baggy Jeans</h3>
-        <p class="product-price">$52</p>
-        <button onclick="addToCart('Baggy Jeans', 52)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-    <img src="https://img.ltwebstatic.com/images3_pi/2024/01/12/96/17050384759fb49efca68e2355e6a5cd43693f8f70_thumbnail_900x.webp" class="product-img" alt="Jeans">
-        <h3 class="product-name">gray Jeans</h3>
-        <p class="product-price">$52</p>
-        <button onclick="addToCart('gray Jeans', 52)">
-Add to Cart
-</button>
-      </div>
-
+      <% products.filter(p => p.category === 'Jeans').forEach(product => { %>
+        <div class="product-card">
+          <a href="/product/<%= product._id %>" style="text-decoration: none; color: inherit;">
+            <img src="<%= product.image %>" class="product-img" alt="<%= product.name %>">
+            <h3 class="product-name"><%= product.name %></h3>
+            <p class="product-price">$<%= product.price %></p>
+          </a>
+          <button class="add-to-cart-btn" data-name="<%= product.name.replace(/'/g, "\\'") %>" data-price="<%= product.price %>">
+            Add to Cart
+          </button>
+        </div>
+      <% }) %>
     </div>
   </div>
 </section>
 
+<!-- Shorts Section -->
 <section id="shorts" class="products">
   <div class="container">
     <h2 class="section-title">Shorts</h2>
-
     <div class="product-grid">
-      <div class="product-card">
-        <img src="https://cdna.lystit.com/photos/2012/04/13/dockers-khaki-chino-shorts-product-2-3210366-956989973.jpeg" class="product-img" alt="Shorts">
-        <h3 class="product-name">casual shorts</h3>
-        <p class="product-price">$40</p>
-        <button onclick="addToCart('casual shorts', 40)">
-Add to Cart
-</button>
-      </div>
-
-      <div class="product-card">
-        <img src="https://oldnavy.gap.com/webcontent/0053/455/292/cn53455292.jpg" class="product-img" alt="Shorts">
-        <h3 class="product-name">light shorts</h3>
-        <p class="product-price">$55</p>
-        <button onclick="addToCart('light shorts', 55)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://cdnb.lystit.com/photos/2013/11/19/ralph-lauren-classic-stone-polo-core-classicfit-flatfront-chino-shorts-product-1-15069042-867102250.jpeg" class="product-img" alt="Shorts">
-        <h3 class="product-name">Off-white shorts</h3>
-        <p class="product-price">$55</p>
-        <button onclick="addToCart('Off-white shorts', 55)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://oldnavy.gap.com/webcontent/0055/694/413/cn55694413.jpg" class="product-img" alt="Shorts">
-        <h3 class="product-name">green shorts</h3>
-        <p class="product-price">$55</p>
-        <button onclick="addToCart('green shorts', 55)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://oldnavy.gap.com/webcontent/0028/574/898/cn28574898.jpg" class="product-img" alt="Shorts">
-        <h3 class="product-name">brown shorts</h3>
-        <p class="product-price">$39</p>
-        <button onclick="addToCart('brown shorts', 39)">
-Add to Cart
-</button>
-      </div>
-
+      <% products.filter(p => p.category === 'Shorts').forEach(product => { %>
+        <div class="product-card">
+          <a href="/product/<%= product._id %>" style="text-decoration: none; color: inherit;">
+            <img src="<%= product.image %>" class="product-img" alt="<%= product.name %>">
+            <h3 class="product-name"><%= product.name %></h3>
+            <p class="product-price">$<%= product.price %></p>
+          </a>
+          <button class="add-to-cart-btn" data-name="<%= product.name.replace(/'/g, "\\'") %>" data-price="<%= product.price %>">
+            Add to Cart
+          </button>
+        </div>
+      <% }) %>
     </div>
   </div>
 </section>
 
+<!-- Shoes Section -->
 <section id="shoes" class="products">
   <div class="container">
     <h2 class="section-title">Shoes</h2>
-
     <div class="product-grid">
-      <div class="product-card">
-        <img src="https://www.apetogentleman.com/wp-content/uploads/2023/06/BoatShoeBrandsMain.jpg" class="product-img" alt="Shoes">
-        <h3 class="product-name">Old Navy shoes</h3>
-        <p class="product-price">$88</p>
-        <button onclick="addToCart('Old Navy shoes', 88)">
-Add to Cart
-</button>
-      </div>
-
-      <div class="product-card">
-        <img src="https://www.apetogentleman.com/wp-content/uploads/2023/04/DressShoesBrandsMain2.jpg" class="product-img" alt="Shoes">
-        <h3 class="product-name">formal shoes</h3>
-        <p class="product-price">$97</p>
-        <button onclick="addToCart('formal shoes', 97)">
-Add to Cart
-</button>
-      </div>
-
-      <div class="product-card">
-        <img src="https://www.werd.com/wp-content/uploads/2024/08/best-business-casual-shoes.jpg" class="product-img" alt="Shoes">
-        <h3 class="product-name">leather shoes</h3>
-        <p class="product-price">$130</p>
-        <button onclick="addToCart('leather shoes', 130)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://i.etsystatic.com/37776049/r/il/3b3e6d/4203209866/il_fullxfull.4203209866_hb1n.jpg" class="product-img" alt="Shoes">
-        <h3 class="product-name">casual shoes</h3>
-        <p class="product-price">$75</p>
-        <button onclick="addToCart('casual shoes', 75)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://thursdayboots.com/cdn/shop/products/1024x1024-Men-HighTop-White-011722-3.jpg?v=1668644494" class="product-img" alt="Shoes">
-        <h3 class="product-name">white shoes</h3>
-        <p class="product-price">$60</p>
-        <button onclick="addToCart('white shoes', 60)">
-Add to Cart
-</button>
-      </div>
-
+      <% products.filter(p => p.category === 'Shoes').forEach(product => { %>
+        <div class="product-card">
+          <a href="/product/<%= product._id %>" style="text-decoration: none; color: inherit;">
+            <img src="<%= product.image %>" class="product-img" alt="<%= product.name %>">
+            <h3 class="product-name"><%= product.name %></h3>
+            <p class="product-price">$<%= product.price %></p>
+          </a>
+          <button class="add-to-cart-btn" data-name="<%= product.name.replace(/'/g, "\\'") %>" data-price="<%= product.price %>">
+            Add to Cart
+          </button>
+        </div>
+      <% }) %>
     </div>
   </div>
 </section>
 
+<!-- Watches Section -->
 <section id="watches" class="products">
   <div class="container">
     <h2 class="section-title">Watches</h2>
-
     <div class="product-grid">
-      <div class="product-card">
-        <img src="https://cdn.luxatic.com/wp-content/uploads/2023/02/Best-Gold-Watches-for-Men.jpg" class="product-img" alt="Watches">
-        <h3 class="product-name">black leather watch</h3>
-        <p class="product-price">$206</p>
-        <button onclick="addToCart('black leather watch', 206)">
-Add to Cart
-</button>
-      </div>
-
-      <div class="product-card">
-        <img src="https://mensflair.com/wp-content/uploads/2023/07/longines-dolce-vita-on-wrist.jpg" class="product-img" alt="Watches">
-        <h3 class="product-name">brown leather watch</h3>
-        <p class="product-price">$190</p>
-        <button onclick="addToCart('brown leather watch', 190)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://wwd.com/wp-content/uploads/2023/10/best-watches-for-men.png?w=911" class="product-img" alt="Watches">
-        <h3 class="product-name">Steel watch</h3>
-        <p class="product-price">$122</p>
-        <button onclick="addToCart('Steel watch', 122)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://cdn.watchesyoucanafford.com/wp-content/uploads/2022/08/Best-Affordable-Chronograph-Watches.jpg" class="product-img" alt="Watches">
-        <h3 class="product-name">casual watch</h3>
-        <p class="product-price">$90</p>
-        <button onclick="addToCart('casual watch', 90)">
-Add to Cart
-</button>
-      </div>
-
-<div class="product-card">
-        <img src="https://cdn.luxe.digital/media/2021/07/02104538/best-men-watches-review-luxe-digital@2x.jpg" class="product-img" alt="Watches">
-        <h3 class="product-name">new stylish watch</h3>
-        <p class="product-price">$240</p>
-        <button onclick="addToCart('new stylish watch', 240)">
-Add to Cart
-</button>
-      </div>
-
+      <% products.filter(p => p.category === 'Watches').forEach(product => { %>
+        <div class="product-card">
+          <a href="/product/<%= product._id %>" style="text-decoration: none; color: inherit;">
+            <img src="<%= product.image %>" class="product-img" alt="<%= product.name %>">
+            <h3 class="product-name"><%= product.name %></h3>
+            <p class="product-price">$<%= product.price %></p>
+          </a>
+          <button class="add-to-cart-btn" data-name="<%= product.name.replace(/'/g, "\\'") %>" data-price="<%= product.price %>">
+            Add to Cart
+          </button>
+        </div>
+      <% }) %>
     </div>
   </div>
 </section>
 
-
 <footer class="footer">
   <div class="container footer-container">
-
     <div class="footer-section">
       <h3>StyleHub</h3>
       <p>Men's fashion store for modern style</p>
     </div>
-
     <div class="footer-section">
       <h4>Quick Links</h4>
       <a href="#home">Home</a>
@@ -436,71 +225,370 @@ Add to Cart
       <a href="#offers">Offers</a>
       <a href="#products">Products</a>
     </div>
-
     <div class="footer-section">
       <h4>Contact</h4>
       <p>Email: a66s99a4@gmail.com</p>
       <p>Phone: +973 66937709</p>
     </div>
-
   </div>
-
   <p class="footer-bottom">© 2026 The brand is managed by Abdulaziz, Mohammed, and Abdulla</p>
 </footer>
 
-
-
 <style>
+/* All your existing CSS styles remain the same */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ... (keep all your existing CSS styles exactly as they are) ... */
+/* Copy all your existing CSS styles from your original main.ejs here */
+
+.header {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo {
+  color: #333;
+  font-size: 24px;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.cart-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.cart-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+}
+
+.profile-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.profile-btn:hover {
+  background-color: #5a6268;
+}
+
+.signin-btn {
+  background-color: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.signin-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.signup-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.signup-btn:hover {
+  background-color: #0056b3;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+.username {
+  color: #666;
+  font-size: 14px;
+}
+
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 120px 0 80px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.hero-title {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  background-color: white;
+  color: #667eea;
+  padding: 12px 30px;
+  font-size: 18px;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.categories {
+  padding: 60px 0;
+  background-color: #fff;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.category-card {
+  background-color: #f8f9fa;
+  padding: 30px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  font-weight: 500;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  background-color: #007bff;
+  color: white;
+}
+
+.offers {
+  padding: 60px 0;
+  background-color: #f8f9fa;
+}
+
+.products {
+  padding: 60px 0;
+}
+
 .product-img {
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
   border-radius: 10px;
 }
 
 .product-card {
-  width: 180px;
-  border-radius: 15px;
-  overflow: hidden;
   background: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.product-name {
+  font-size: 16px;
+  margin: 15px 0 5px;
+  padding: 0 10px;
+}
+
+.product-price {
+  color: #007bff;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.product-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+  background-color: #0056b3;
 }
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-}
-
-.cart-icon {
-  position: relative;
-  font-size: 20px;
-  cursor: pointer;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
 }
 
 .offers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 .offer-card {
   background: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   text-align: center;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .offer-img {
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
+.offer-card h3 {
+  margin: 10px 0;
+  color: #333;
+}
+
+.offer-card p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 40px 0 20px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 15px;
+}
+
+.footer-section a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #555;
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+}
 </style>
 
 <script>
@@ -510,11 +598,25 @@ function addToCart(name, price) {
   cart.push({ name, price });
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
+  alert(`${name} added to cart!`);
 }
 
 function updateCartCount() {
-  document.getElementById("cart-count").innerText = cart.length;
+  const cartCountElement = document.getElementById("cart-count");
+  if (cartCountElement) {
+    cartCountElement.innerText = cart.length;
+  }
 }
+
+
+document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+  button.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const name = this.getAttribute('data-name');
+    const price = parseInt(this.getAttribute('data-price'));
+    addToCart(name, price);
+  });
+});
 
 updateCartCount();
 </script>
