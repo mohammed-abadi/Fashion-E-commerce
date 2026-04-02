@@ -1,7 +1,6 @@
 const Product = require("../models/Product")
 const Review = require("../models/Review")
 
-// Get all products (API)
 const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find()
@@ -12,7 +11,6 @@ const getAllProducts = async (req, res) => {
   }
 }
 
-// Get single product with reviews
 const getProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id)
@@ -35,7 +33,6 @@ const getProduct = async (req, res) => {
   }
 }
 
-// Add review to product
 const addReview = async (req, res) => {
   try {
     if (!req.session.user) {
@@ -60,7 +57,6 @@ const addReview = async (req, res) => {
   }
 }
 
-// Delete review
 const deleteReview = async (req, res) => {
   try {
     if (!req.session.user) {
@@ -70,7 +66,6 @@ const deleteReview = async (req, res) => {
     const { productId, reviewId } = req.params
     const review = await Review.findById(reviewId)
 
-    // Check if the review belongs to the logged-in user
     if (!review || review.user.toString() !== req.session.user._id) {
       return res
         .status(403)
@@ -85,7 +80,6 @@ const deleteReview = async (req, res) => {
   }
 }
 
-// Seed products
 const seedProducts = async (req, res) => {
   try {
     const products = [
