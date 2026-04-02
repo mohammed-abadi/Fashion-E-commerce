@@ -15,10 +15,11 @@ const userRouter = require("./routes/userRouter")
 const addressRouter = require("./routes/addressRouter")
 const productRouter = require("./routes/productRouter")
 const Product = require("./models/Product")
+const Address = require("./models/Address") // ADD THIS
 
 const PORT = process.env.PORT ? process.env.PORT : 3000
 const app = express()
-
+app.use(express.static("public"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, "public")))
@@ -49,13 +50,27 @@ app.use("/users", userRouter)
 app.use("/address", addressRouter)
 app.use("/product", productRouter)
 
-app.get("/profile", (req, res) => {
+// Profile route - fetch address
+app.get("/profile", async (req, res) => {
   if (!req.session.user) {
     return res.redirect("/auth/sign-in")
   }
-  res.render("users/profile", { user: req.session.user })
+  try {
+    const address = await Address.findOne({ user: req.session.user._id })
+    res.render("users/profile", {
+      user: req.session.user,
+      address: address || null,
+    })
+  } catch (error) {
+    console.error(error)
+    res.render("users/profile", {
+      user: req.session.user,
+      address: null,
+    })
+  }
 })
 
+// Home route
 app.get("/", async (req, res) => {
   try {
     const products = await Product.find()
@@ -72,8 +87,24 @@ app.get("/", async (req, res) => {
   }
 })
 
-app.get("/cart", (req, res) => {
-  res.render("cart/index", { user: req.session.user || null })
+// Cart route - fetch address
+app.get("/cart", async (req, res) => {
+  try {
+    let address = null
+    if (req.session.user) {
+      address = await Address.findOne({ user: req.session.user._id })
+    }
+    res.render("cart/index", {
+      user: req.session.user || null,
+      address: address || null,
+    })
+  } catch (error) {
+    console.error(error)
+    res.render("cart/index", {
+      user: req.session.user || null,
+      address: null,
+    })
+  }
 })
 
 app.listen(PORT, () => {

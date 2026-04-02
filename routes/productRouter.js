@@ -10,4 +10,9 @@ router.get("/:id", productController.getProduct)
 
 router.post("/:id/review", productController.addReview)
 
+router.post(
+  "/:productId/review/:reviewId/delete",
+  productController.deleteReview
+)
+
 module.exports = router

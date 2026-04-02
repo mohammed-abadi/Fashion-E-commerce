@@ -2,46 +2,176 @@
 <html>
   <head>
     <title>Cart</title>
+    <link rel="stylesheet" href="/style.css">
+
   </head>
   <body>
-    <h1>Your Cart 🛒</h1>
 
-    <div id="cart-items"></div>
-    <h3 id="total"></h3>
 
-    <a href="/">⬅ Back to Shop</a>
+    <div id="server-data"
+         data-user='<%- JSON.stringify(user || null) %>'
+         data-address='<%- JSON.stringify(address || null) %>'>
+    </div>
+
+    <header class="header">
+      <div class="container header-container">
+        <h1 class="logo">Fashion-E-commerce</h1>
+        <nav class="nav">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/#categories" class="nav-link">Categories</a>
+          <a href="/#offers" class="nav-link">Offers</a>
+          <a href="/#products" class="nav-link">Products</a>
+          <a href="/#contact" class="nav-link">Contact</a>
+          <div class="cart-nav">
+            <a href="/cart" class="nav-link">Cart</a>
+            <span class="cart-icon-badge">🛒 <span id="cart-count">0</span></span>
+          </div>
+        </nav>
+        <div class="auth-buttons">
+          <% if (user) { %>
+            <a href="/profile" class="btn profile-btn">👤 Profile</a>
+            <span class="username">Welcome, <%= user.first %> <%= user.last %></span>
+            <a href="/auth/sign-out" class="btn logout-btn">Logout</a>
+          <% } else { %>
+            <a href="/auth/sign-in" class="btn signin-btn">Sign In</a>
+            <a href="/auth/sign-up" class="btn signup-btn">Sign Up</a>
+          <% } %>
+        </div>
+      </div>
+    </header>
+
+    <div class="cart-container">
+      <h1>Your Cart 🛒</h1>
+
+      <div id="cart-items"></div>
+      <div class="cart-total">
+        <h3 id="total"></h3>
+      </div>
+
+      <a href="/" class="btn btn-secondary">⬅ Back to Shop</a>
+
+      <div id="checkout-section" style="margin-top: 30px;"></div>
+    </div>
+
     <script>
-      let cart = JSON.parse(localStorage.getItem("cart")) || []
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+      const serverData = document.getElementById("server-data");
+      const user = JSON.parse(serverData.dataset.user || "null");
+      const savedAddress = JSON.parse(serverData.dataset.address || "null");
 
       function displayCart() {
-        let container = document.getElementById("cart-items")
-        let total = 0
-
-        container.innerHTML = ""
+        let container = document.getElementById("cart-items");
+        let total = 0;
+        container.innerHTML = "";
 
         cart.forEach((item, index) => {
-          total += item.price
-
+          total += item.price;
           container.innerHTML += `
-      <div style="margin:10px;">
-        ${item.name} - $${item.price}
-        <button onclick="removeItem(${index})">Remove</button>
-      </div>
-    `
-        })
+            <div class="cart-item">
+              <div class="cart-item-info">
+                <div class="cart-item-name">${item.name}</div>
+                <div class="cart-item-price">$${item.price}</div>
+              </div>
+              <button onclick="removeItem(${index})" class="btn btn-danger">Remove</button>
+            </div>
+          `;
+        });
 
-        document.getElementById("total").innerText = "Total: $" + total
+        document.getElementById("total").innerText = "Total: $" + total;
+
+        if (cart.length > 0) {
+          loadCheckoutForm(total);
+        } else {
+          document.getElementById("checkout-section").innerHTML =
+            '<p style="text-align: center;">Your cart is empty. Add some items to checkout!</p>';
+        }
+      }
+
+      function loadCheckoutForm(total) {
+        const checkoutSection = document.getElementById("checkout-section");
+
+        if (user && savedAddress && savedAddress.address) {
+          checkoutSection.innerHTML = `
+            <div class="checkout-summary">
+              <h2>Shipping Information</h2>
+              <p><strong>Name:</strong> ${user.first} ${user.last}</p>
+              <p><strong>Address:</strong> ${savedAddress.address}</p>
+              <p><strong>Street:</strong> ${savedAddress.street}</p>
+              <p><strong>City:</strong> ${savedAddress.city || 'Not specified'}</p>
+              <p><strong>Payment Method:</strong> ${
+                savedAddress.payment === 'cash' ? 'Cash on Delivery' : 'Card Payment'
+              }</p>
+              <p><strong>Total Amount:</strong> $${total}</p>
+              <button onclick="placeOrder()" class="btn btn-success">Place Order</button>
+              <a href="/profile" class="btn btn-secondary">Edit Address</a>
+            </div>
+          `;
+        } else if (user) {
+          checkoutSection.innerHTML = `
+            <div class="checkout-form">
+              <h2>Shipping Information</h2>
+              <form action="/address" method="POST">
+                <div class="form-group">
+                  <label>Address:</label>
+                  <input type="text" name="address" required placeholder="Home Address">
+                </div>
+                <div class="form-group">
+                  <label>Street:</label>
+                  <input type="text" name="street" required placeholder="Highway 10">
+                </div>
+                <div class="form-group">
+                  <label>City:</label>
+                  <input type="text" name="city" placeholder="Manama">
+                </div>
+                <div class="form-group">
+                  <label>Payment Method:</label>
+                  <select name="payment" required>
+                    <option value="cash">Cash on Delivery</option>
+                    <option value="card">Card Payment</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Save & Continue</button>
+              </form>
+            </div>
+          `;
+        } else {
+          checkoutSection.innerHTML = `
+            <div class="checkout-form">
+              <p>Please <a href="/auth/sign-in">sign in</a> to complete your order.</p>
+            </div>
+          `;
+        }
       }
 
       function removeItem(index) {
-        cart.splice(index, 1)
-        localStorage.setItem("cart", JSON.stringify(cart))
-        displayCart()
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        displayCart();
+        updateCartCount();
       }
 
-      displayCart()
+      function placeOrder() {
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+        alert(`Order placed successfully! Total: $${total}\nThank you for your purchase!`);
+
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+        displayCart();
+        updateCartCount();
+      }
+
+      function updateCartCount() {
+        const cartCountElement = document.getElementById("cart-count");
+        if (cartCountElement) {
+          cartCountElement.innerText = cart.length;
+        }
+      }
+
+      displayCart();
+      updateCartCount();
     </script>
 
-    <%- include('./checkout.ejs') %>
   </body>
 </html>

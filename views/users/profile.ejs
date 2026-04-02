@@ -4,26 +4,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - FashionHub</title>
+    <link rel="stylesheet" href="/style.css">
+
 </head>
 <body>
-    <h1>Welcome, <%= user.first %> <%= user.last %>!</h1>
 
-    <% if (user.picture) { %>
-        <img src="<%= user.picture %>" alt="Profile Picture" width="150" height="150">
+<header class="header">
+  <div class="container header-container">
+    <h1 class="logo">Fashion-E-commerce</h1>
+    <nav class="nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/#categories" class="nav-link">Categories</a>
+      <a href="/#offers" class="nav-link">Offers</a>
+      <a href="/#products" class="nav-link">Products</a>
+      <a href="/#contact" class="nav-link">Contact</a>
+      <div class="cart-nav">
+        <a href="/cart" class="nav-link">Cart</a>
+        <span class="cart-icon-badge">🛒 <span id="cart-count">0</span></span>
+      </div>
+    </nav>
+    <div class="auth-buttons">
+      <a href="/profile" class="btn profile-btn">👤 Profile</a>
+      <span class="username">Welcome, <%= user.first %> <%= user.last %></span>
+      <a href="/auth/sign-out" class="btn logout-btn">Logout</a>
+    </div>
+  </div>
+</header>
+
+<div class="profile-container">
+
+        <h1>Welcome, <%= user.first %> <%= user.last %>!</h1>
+          <% if (user.picture) { %>
+        <img src="<%= user.picture %>" alt="Profile Picture" style="border-radius: 50%; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
     <% } %>
-
-    <p><strong>Email:</strong> <%= user.email %></p>
-
-    <div>
-        <a href="/auth/<%= user._id %>/update-password">Update Password</a>
     </div>
 
-    <div>
-        <a href="/auth/sign-out">Sign Out</a>
+
+
+    <div class="profile-section">
+        <h3>Personal Information</h3>
+        <div class="info-row">
+            <span class="info-label">First Name:</span>
+            <span class="info-value"><%= user.first %></span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Last Name:</span>
+            <span class="info-value"><%= user.last %></span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Email:</span>
+            <span class="info-value"><%= user.email %></span>
+        </div>
     </div>
 
-    <div>
-        <a href="/">Back to Home</a>
+    <div class="profile-section">
+        <h3>Shipping Address & Payment Method</h3>
+        <div id="addressDisplay">
+            <div id="addressInfo" class="address-display">
+                <% if (address) { %>
+                    <div class="info-row">
+                        <span class="info-label">Address:</span>
+                        <span class="info-value"><%= address.address %></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Street:</span>
+                        <span class="info-value"><%= address.street %></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">City:</span>
+                        <span class="info-value"><%= address.city || 'Not specified' %></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Payment Method:</span>
+                        <span class="info-value"><%= address.payment === 'cash' ? 'Cash on Delivery' : 'Card Payment' %></span>
+                    </div>
+                <% } else { %>
+                    <p>No address saved yet. Click "Edit Address" to add your shipping information.</p>
+                <% } %>
+            </div>
+            <button id="editAddressBtn" class="btn btn-edit">Edit Address & Payment</button>
+        </div>
+
+        <div id="addressForm" class="edit-form hidden">
+            <h4>Edit Shipping Information</h4>
+            <form id="updateAddressForm" action="/address" method="POST">
+                <div class="form-group">
+                    <label>Address:</label>
+                    <input type="text" id="address" name="address" required placeholder="Home Address" value="<%= address ? address.address : '' %>">
+                </div>
+                <div class="form-group">
+                    <label>Street:</label>
+                    <input type="text" id="street" name="street" required placeholder="Highway 10" value="<%= address ? address.street : '' %>">
+                </div>
+                <div class="form-group">
+                    <label>City:</label>
+                    <input type="text" id="city" name="city" placeholder="Manama" value="<%= address ? address.city : '' %>">
+                </div>
+                <div class="form-group">
+                    <label>Payment Method:</label>
+                    <select id="payment" name="payment" required>
+                        <option value="cash" <%= address && address.payment === 'cash' ? 'selected' : '' %>>Cash on Delivery</option>
+                        <option value="card" <%= address && address.payment === 'card' ? 'selected' : '' %>>Card Payment</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="button" id="cancelEditBtn" class="btn btn-secondary">Cancel</button>
+            </form>
+        </div>
     </div>
+
+    <div class="profile-section">
+        <h3>Account Actions</h3>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <a href="/auth/<%= user._id %>/update-password" class="btn btn-primary">Update Password</a>
+            <a href="/auth/sign-out" class="btn btn-danger">Sign Out</a>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCartCount() {
+    const cartCountElement = document.getElementById("cart-count");
+    if (cartCountElement) {
+        cartCountElement.innerText = cart.length;
+    }
+}
+
+updateCartCount();
+
+
+document.getElementById('editAddressBtn').addEventListener('click', () => {
+    document.getElementById('addressDisplay').classList.add('hidden');
+    document.getElementById('addressForm').classList.remove('hidden');
+});
+
+document.getElementById('cancelEditBtn').addEventListener('click', () => {
+    document.getElementById('addressDisplay').classList.remove('hidden');
+    document.getElementById('addressForm').classList.add('hidden');
+});
+
+
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('updated') === 'true') {
+    const successMsg = document.createElement('div');
+    successMsg.className = 'alert alert-success';
+    successMsg.textContent = 'Address updated successfully!';
+    document.querySelector('.profile-section').insertBefore(successMsg, document.getElementById('addressDisplay'));
+    setTimeout(() => successMsg.remove(), 3000);
+}
+</script>
+
 </body>
 </html>
