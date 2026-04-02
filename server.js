@@ -15,7 +15,7 @@ const userRouter = require("./routes/userRouter")
 const addressRouter = require("./routes/addressRouter")
 const productRouter = require("./routes/productRouter")
 const Product = require("./models/Product")
-const Address = require("./models/Address") // ADD THIS
+const Address = require("./models/Address")
 
 const PORT = process.env.PORT ? process.env.PORT : 3000
 const app = express()
@@ -50,7 +50,6 @@ app.use("/users", userRouter)
 app.use("/address", addressRouter)
 app.use("/product", productRouter)
 
-// Profile route - fetch address
 app.get("/profile", async (req, res) => {
   if (!req.session.user) {
     return res.redirect("/auth/sign-in")
@@ -70,7 +69,6 @@ app.get("/profile", async (req, res) => {
   }
 })
 
-// Home route
 app.get("/", async (req, res) => {
   try {
     const products = await Product.find()
@@ -87,7 +85,6 @@ app.get("/", async (req, res) => {
   }
 })
 
-// Cart route - fetch address
 app.get("/cart", async (req, res) => {
   try {
     let address = null
