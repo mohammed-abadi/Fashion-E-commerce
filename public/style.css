@@ -9,8 +9,8 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #f0f2f5, #e4e9f2);
-  color: #333;
+  background: linear-gradient(135deg, #f7f4ef, #eae4da);
+  color: #2c2c2c;
   min-height: 100vh;
   line-height: 1.6;
 }
@@ -44,17 +44,17 @@ h4 {
 
 p {
   margin-bottom: 15px;
-  color: #555;
+  color: #6e6a64;
 }
 
 a {
   text-decoration: none;
-  color: #007bff;
+  color: #8c6b4f;
   transition: color 0.3s;
 }
 
 a:hover {
-  color: #0056b3;
+  color: #5a4634;
 }
 
 img {
@@ -94,18 +94,18 @@ th,
 td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e5e0d8;
 }
 
 th {
-  background: rgba(0, 123, 255, 0.1);
+  background: rgba(184, 155, 114, 0.1);
   font-weight: bold;
 }
 
 hr {
   margin: 20px 0;
   border: none;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e5e0d8;
 }
 
 .container {
@@ -122,8 +122,8 @@ hr {
   top: 0;
   width: 100%;
   backdrop-filter: blur(15px);
-  background: rgba(255, 255, 255, 0.6);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(247, 244, 239, 0.85);
+  border-bottom: 1px solid #e5e0d8;
   z-index: 1000;
 }
 
@@ -137,7 +137,7 @@ hr {
 .logo {
   font-size: 22px;
   font-weight: bold;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #8c6b4f, #c2a27a);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -151,13 +151,13 @@ hr {
 
 .nav-link {
   text-decoration: none;
-  color: #333;
+  color: #2c2c2c;
   font-weight: 500;
   transition: color 0.3s;
 }
 
 .nav-link:hover {
-  color: #007bff;
+  color: #8c6b4f;
 }
 
 .cart-nav {
@@ -167,7 +167,7 @@ hr {
 }
 
 .cart-icon-badge {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(247, 244, 239, 0.6);
   padding: 6px 12px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
@@ -187,7 +187,7 @@ hr {
 }
 
 .username {
-  color: #666;
+  color: #6e6a64;
   font-size: 14px;
 }
 
@@ -198,10 +198,10 @@ hr {
 button {
   padding: 8px 16px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(184, 155, 114, 0.3);
+  background: rgba(247, 244, 239, 0.4);
   backdrop-filter: blur(10px);
-  color: #333;
+  color: #2c2c2c;
   cursor: pointer;
   transition: all 0.3s;
   font-weight: 500;
@@ -212,83 +212,83 @@ button {
 
 .btn:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(247, 244, 239, 0.7);
 }
 
 .btn-primary {
-  background: rgba(0, 123, 255, 0.3);
-  color: #007bff;
+  background: rgba(184, 155, 114, 0.3);
+  color: #8c6b4f;
 }
 
 .btn-primary:hover {
-  background: rgba(0, 123, 255, 0.5);
+  background: rgba(184, 155, 114, 0.5);
 }
 
 .btn-danger {
-  background: rgba(220, 53, 69, 0.3);
-  color: #dc3545;
+  background: rgba(150, 80, 70, 0.3);
+  color: #965046;
 }
 
 .btn-danger:hover {
-  background: rgba(220, 53, 69, 0.5);
+  background: rgba(150, 80, 70, 0.5);
 }
 
 .btn-success {
-  background: rgba(40, 167, 69, 0.3);
-  color: #28a745;
+  background: rgba(120, 140, 100, 0.3);
+  color: #6f7f5f;
 }
 
 .btn-success:hover {
-  background: rgba(40, 167, 69, 0.5);
+  background: rgba(120, 140, 100, 0.5);
 }
 
 .btn-secondary {
-  background: rgba(108, 117, 125, 0.3);
-  color: #6c757d;
+  background: rgba(150, 140, 130, 0.3);
+  color: #7a7268;
 }
 
 .btn-secondary:hover {
-  background: rgba(108, 117, 125, 0.5);
+  background: rgba(150, 140, 130, 0.5);
 }
 
 .profile-btn {
-  background: rgba(108, 117, 125, 0.3);
-  color: #6c757d;
+  background: rgba(150, 140, 130, 0.3);
+  color: #7a7268;
 }
 
 .profile-btn:hover {
-  background: rgba(108, 117, 125, 0.5);
+  background: rgba(150, 140, 130, 0.5);
 }
 
 .signin-btn {
   background: transparent;
-  border: 1px solid #007bff;
-  color: #007bff;
+  border: 1px solid #8c6b4f;
+  color: #8c6b4f;
 }
 
 .signin-btn:hover {
-  background: #007bff;
+  background: #8c6b4f;
   color: white;
 }
 
 .signup-btn {
-  background: #007bff;
+  background: #8c6b4f;
   color: white;
   border: none;
 }
 
 .signup-btn:hover {
-  background: #0056b3;
+  background: #6f543d;
 }
 
 .logout-btn {
-  background: #dc3545;
+  background: #965046;
   color: white;
   border: none;
 }
 
 .logout-btn:hover {
-  background: #c82333;
+  background: #7d3f37;
 }
 
 /* ========================================
@@ -297,8 +297,8 @@ button {
 .hero {
   padding: 140px 0 80px;
   text-align: center;
-  color: white;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #2c2c2c;
+  background: linear-gradient(135deg, #eae4da, #d8cfc3);
   margin-top: 60px;
 }
 
@@ -310,19 +310,19 @@ button {
 .hero-subtitle {
   font-size: 20px;
   margin-bottom: 30px;
-  color: #000000;
+  color: #6e6a64;
 }
 
 .hero-btn {
   background: white;
-  color: #667eea;
+  color: #8c6b4f;
   padding: 12px 30px;
   font-size: 18px;
 }
 
 .hero-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* ========================================
@@ -332,7 +332,7 @@ button {
   text-align: center;
   font-size: 36px;
   margin: 40px 0;
-  color: #333;
+  color: #2c2c2c;
 }
 
 /* ========================================
@@ -376,7 +376,7 @@ button {
 .offer-card:hover,
 .category-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .category-card {
@@ -385,7 +385,7 @@ button {
 }
 
 .category-card:hover {
-  background: #007bff;
+  background: #8c6b4f;
   color: white;
 }
 
@@ -409,14 +409,14 @@ button {
 }
 
 .product-price {
-  color: #007bff;
+  color: #8c6b4f;
   font-weight: bold;
   font-size: 18px;
   margin: 5px 0;
 }
 
 .product-card button {
-  background-color: #007bff;
+  background-color: #8c6b4f;
   color: white;
   border: none;
   padding: 10px;
@@ -428,7 +428,7 @@ button {
 }
 
 .product-card button:hover {
-  background-color: #0056b3;
+  background-color: #6f543d;
 }
 
 /* ========================================
@@ -436,7 +436,7 @@ button {
    ======================================== */
 .offers {
   padding: 60px 0;
-  background-color: #f8f9fa;
+  background-color: #f1ebe3;
 }
 
 .offer-card h3 {
@@ -445,7 +445,7 @@ button {
 
 .offer-card p {
   margin-bottom: 15px;
-  color: #666;
+  color: #6e6a64;
 }
 
 /* ========================================
@@ -453,7 +453,7 @@ button {
    ======================================== */
 .categories {
   padding: 60px 0;
-  background-color: #fff;
+  background-color: #f7f4ef;
 }
 
 /* ========================================
@@ -480,7 +480,7 @@ button {
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e5e0d8;
 }
 
 .cart-item-info {
@@ -493,14 +493,14 @@ button {
 }
 
 .cart-item-price {
-  color: #007bff;
+  color: #8c6b4f;
 }
 
 .cart-total {
   text-align: right;
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 2px solid #ddd;
+  border-top: 2px solid #e5e0d8;
   font-weight: bold;
   font-size: 20px;
 }
@@ -525,7 +525,7 @@ button {
 .profile-avatar {
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #8c6b4f, #c2a27a);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -544,23 +544,23 @@ button {
 
 .profile-section h3 {
   margin-bottom: 15px;
-  color: #333;
+  color: #2c2c2c;
 }
 
 .info-row {
   padding: 10px 0;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #e5e0d8;
 }
 
 .info-label {
   font-weight: bold;
-  color: #495057;
+  color: #5a4634;
   width: 120px;
   display: inline-block;
 }
 
 .info-value {
-  color: #212529;
+  color: #2c2c2c;
 }
 
 .address-display {
@@ -570,7 +570,7 @@ button {
 .edit-form {
   margin-top: 15px;
   padding-top: 15px;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #e5e0d8;
 }
 
 .hidden {
@@ -584,9 +584,9 @@ button {
 }
 
 .alert-success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+  background-color: #e6dfd5;
+  color: #5a4634;
+  border: 1px solid #d8cfc3;
 }
 
 /* ========================================
@@ -600,7 +600,7 @@ button {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #495057;
+  color: #5a4634;
 }
 
 input,
@@ -609,7 +609,7 @@ textarea {
   width: 100%;
   padding: 8px 10px;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #e5e0d8;
   font-size: 14px;
   transition: border-color 0.3s;
 }
@@ -618,7 +618,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: #8c6b4f;
 }
 
 /* ========================================
@@ -648,18 +648,18 @@ textarea:focus {
 .product-detail-info h1 {
   font-size: 32px;
   margin-bottom: 15px;
-  color: #333;
+  color: #2c2c2c;
 }
 
 .product-detail-price {
   font-size: 28px;
-  color: #007bff;
+  color: #8c6b4f;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
 .product-detail-description {
-  color: #666;
+  color: #6e6a64;
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -670,16 +670,16 @@ textarea:focus {
 .reviews-section {
   margin-top: 40px;
   padding-top: 40px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #e5e0d8;
 }
 
 .reviews-section h2 {
   margin-bottom: 20px;
-  color: #333;
+  color: #2c2c2c;
 }
 
 .review-form {
-  background: rgba(248, 249, 250, 0.8);
+  background: rgba(241, 235, 227, 0.8);
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -711,16 +711,16 @@ textarea:focus {
   justify-content: space-between;
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #e5e0d8;
 }
 
 .review-user {
   font-weight: bold;
-  color: #333;
+  color: #2c2c2c;
 }
 
 .review-rating {
-  color: #ffc107;
+  color: #b89b72;
 }
 
 .review-date {
@@ -730,7 +730,7 @@ textarea:focus {
 }
 
 .review-comment {
-  color: #666;
+  color: #6e6a64;
   line-height: 1.5;
   margin-top: 10px;
 }
@@ -741,7 +741,7 @@ textarea:focus {
 }
 
 .delete-review-btn {
-  background-color: #dc3545;
+  background-color: #965046;
   color: white;
   border: none;
   padding: 5px 15px;
@@ -751,7 +751,7 @@ textarea:focus {
 }
 
 .delete-review-btn:hover {
-  background-color: #c82333;
+  background-color: #7d3f37;
 }
 
 .no-reviews {
@@ -765,7 +765,7 @@ textarea:focus {
    ======================================== */
 .checkout-summary,
 .checkout-form {
-  background: rgba(248, 249, 250, 0.8);
+  background: rgba(241, 235, 227, 0.8);
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
@@ -779,7 +779,7 @@ textarea:focus {
    FOOTER
    ======================================== */
 .footer {
-  background: #222;
+  background: #2c2c2c;
   color: white;
   padding: 40px 0 20px;
   margin-top: 60px;
